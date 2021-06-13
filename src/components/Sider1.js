@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Checkbox } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -7,10 +7,13 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import React from 'react';
+import "./sider.css";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
-
+function onChange(e) {
+  console.log(`checked = ${e.target.checked}`);
+}
 class SiderDemo extends React.Component {
   state = {
     collapsed: false,
@@ -21,46 +24,38 @@ class SiderDemo extends React.Component {
     this.setState({ collapsed });
   };
 
+
+
+
+
+
   render() {
     const { collapsed } = this.state;
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+      <Layout style={{ minHeight: '0vh' }}>
+        <Sider width={220}
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            left: 0,
+          }} collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Option 1
+              Sort by
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
+            <SubMenu key="sub1" icon={<UserOutlined />} title="Sort by">
+              <Menu.Item key="3"><Checkbox onChange={onChange}></Checkbox> Oxygen</Menu.Item>
+              <Menu.Item key="3"><Checkbox onChange={onChange}></Checkbox> Medicine</Menu.Item>
+              <Menu.Item key="3"><Checkbox onChange={onChange}></Checkbox> Money</Menu.Item>
+              <Menu.Item key="3"><Checkbox onChange={onChange}></Checkbox> Hospital beds</Menu.Item>
+              <Menu.Item key="3"><Checkbox onChange={onChange}></Checkbox> Plasma donors</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-        </Layout>
+
+
       </Layout>
     );
   }

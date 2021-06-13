@@ -7,6 +7,10 @@
 }
 
 body {
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -15,7 +19,7 @@ body {
   margin: 30px auto;
   overflow: auto;
   max-height: cover;
-  padding: 30px;
+  padding: 0px 0px 0px 220px;
   border-radius: 5px;
 }
 
