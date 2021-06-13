@@ -1,5 +1,12 @@
 @import '~antd/dist/antd.css';
 .site-card-border-less-wrapper {
-    padding: 30px;
-    background: #ececec;
-  }
+	padding: 30px;
+	background: #ececec;
+}
+.app-container {
+	display: flex;
+}
+.tweet-container {
+	display: flex;
+	flex-direction: column;
+}
